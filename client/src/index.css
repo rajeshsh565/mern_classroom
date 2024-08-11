@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form-row input:focus ~ label, .form-row input:valid ~ label{
+    transform: translateY(-2rem);
+    font-size: 0.9rem;
+}
