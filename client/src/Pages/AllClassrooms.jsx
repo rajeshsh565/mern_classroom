@@ -57,7 +57,7 @@ const AllClassrooms = () => {
                       <div className="flex justify-around text-accent-content overflow-hidden">
                         <input
                           type="time"
-                          className="text-center rounded-md px-4"
+                          className="text-center rounded-md px-2"
                           value={schedule.startTime}
                           onChange={(e) =>
                             console.log()
@@ -66,7 +66,7 @@ const AllClassrooms = () => {
                         />
                         <input
                           type="time"
-                          className="text-center rounded-md px-4"
+                          className="text-center rounded-md px-2"
                           value={schedule.endTime}
                           onChange={(e) =>
                             console.log()

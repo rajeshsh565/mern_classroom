@@ -97,7 +97,7 @@ const CreateClassroom = () => {
                     <div className="flex justify-around text-accent-content overflow-hidden">
                       <input
                         type="time"
-                        className="text-center rounded-md px-4"
+                        className="text-center rounded-md px-2"
                         defaultValue={schedule.startTime}
                         onInput={(e) =>
                           handleStartTimeChange(schedule.day, e.target.value)
@@ -105,7 +105,7 @@ const CreateClassroom = () => {
                       />
                       <input
                         type="time"
-                        className="text-center rounded-md px-4"
+                        className="text-center rounded-md px-2"
                         defaultValue={schedule.endTime}
                         onInput={(e) =>
                           handleEndTimeChange(schedule.day, e.target.value)
