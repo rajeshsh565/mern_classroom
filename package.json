@@ -9,7 +9,7 @@
     "client": "cd client && npm run dev",
     "server": "nodemon server.js",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "setup-project": "npm install && cd client && npm install"
+    "setup-project": "npm install && cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
