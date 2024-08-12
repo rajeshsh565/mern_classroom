@@ -98,6 +98,11 @@ export const updateTeacher = async(req,res)=>{
 
 export const updateStudent = async(req,res)=>{
     const {id} = req.params;
+    const {email} = req.body;
+    const user = await User.findOne({email});
+    if(user._id!=id){
+        return res.status(400).json({msg:'Email already exists!'});
+    }
     const updatedStudent = await User.findByIdAndUpdate(id, req.body, {new:true});
     res.status(200).json({msg:"Student Info Updated", updatedStudent});
 }

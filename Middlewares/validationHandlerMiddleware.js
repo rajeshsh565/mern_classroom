@@ -26,9 +26,9 @@ export const validateLoginInputs = withValidationErrors([
 ]);
 
 export const validateAddUserInputs = withValidationErrors([
-  body("firstName").notEmpty().withMessage("first name can not be empty"),
-  body("lastName").notEmpty().withMessage("last name can not be empty"),
-  body("email")
+  body("firstName").trim().notEmpty().withMessage("first name can not be empty"),
+  body("lastName").trim().notEmpty().withMessage("last name can not be empty"),
+  body("email").trim()
     .notEmpty()
     .withMessage("email can not be empty")
     .isEmail()
@@ -36,21 +36,26 @@ export const validateAddUserInputs = withValidationErrors([
     .custom(async (email) => {
       const user = await User.findOne({ email });
       if (user) {
-        return res.status(400).json({ msg: "email already exists!" });
+        throw new Error('email already exists!');
       }
     }),
-  body("password").notEmpty().withMessage("password can not be empty"),
+  body("password").trim().notEmpty().withMessage("password can not be empty"),
 ]);
 
 export const validateUserUpdateInputs = withValidationErrors([
-  body("firstName").notEmpty().withMessage("first name can not be empty"),
-  body("lastName").notEmpty().withMessage("last name can not be empty"),
-  body("email")
+  body("firstName").trim().notEmpty().withMessage("first name can not be empty"),
+  body("lastName").trim().notEmpty().withMessage("last name can not be empty"),
+  body("email").trim()
     .notEmpty()
     .withMessage("email can not be empty")
     .isEmail()
     .withMessage("enter valid email address"),
-  body("assignedClassroom")
-    .notEmpty()
+  body("assignedClassroom").trim()
+    .custom((assignedClassroom, {req})=>{
+      if(req.user.role!=='teacher' && !assignedClassroom){
+        throw new Error("classroom to be assigned can not be empty")
+      }
+      return true;
+    })
     .withMessage("classroom to be assigned can not be empty"),
 ]);
