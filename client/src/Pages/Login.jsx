@@ -21,19 +21,21 @@ const Login = () => {
       <h2 className="text-5xl font-bold mb-2">Class<span className="text-primary">Room</span></h2>
       <Form
         method="post"
-        className="card w-3/4 h-5/6 bg-base-200 flex flex-col justify-center items-center"
+        className="card w-3/4 h-5/6 max-h-96 bg-base-200 flex flex-col justify-center items-center"
       >
         <h3 className="text-4xl font-semibold mb-16">Login</h3>
         <FormRow
           type="text"
           name="email"
           labelText="Enter Email"
+          defaultValue='principal@classroom.com'
           required={true}
         />
         <FormRow
           type="password"
           name="password"
           labelText="Enter Password"
+          defaultValue='Admin'
           required={true}
         />
         <button type="submit" className="btn btn-outline w-36 text-lg">
